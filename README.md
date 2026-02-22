@@ -45,7 +45,7 @@ This project was completed as part of a challenge from **Frontend Mentor**.
 
 ## 📸 Screenshot
 
-![Project Screenshot](./images/screenshot.png)
+![Project Screenshot](./src/images/screenshot.png)
 
 ---
 
