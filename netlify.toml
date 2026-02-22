@@ -1,0 +1,6 @@
+[build]
+  publish = "dist/ip-adderss-tracker"
+  command = "npx ng build --configuration production"
+
+[context.production.environment]
+  NODE_VERSION = "16"
