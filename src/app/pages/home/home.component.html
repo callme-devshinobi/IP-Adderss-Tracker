@@ -1,0 +1,62 @@
+<div class="tracker-wrapper">
+
+    <!-- Hero Header -->
+    <header class="hero">
+      <div class="hero__bg-pattern"></div>
+      <div class="hero__content">
+        <h1 class="hero__title">IP Address Tracker</h1>
+  
+        <div class="search-bar">
+          <input
+            class="search-bar__input"
+            type="text"
+            placeholder="Search for any IP address or domain"
+            [value]="searchQuery()"
+            (input)="searchQuery.set($any($event.target).value)"
+            (keydown)="onKeyDown($event)"
+            aria-label="Search IP address or domain"
+          />
+          <button
+            class="search-bar__btn"
+            (click)="onSearch()"
+            [class.loading]="isLoading()"
+            aria-label="Search"
+          >
+            <span class="search-bar__arrow" *ngIf="!isLoading()">&#8250;</span>
+            <span class="search-bar__spinner" *ngIf="isLoading()"></span>
+          </button>
+        </div>
+      </div>
+      <p class="hero__error" *ngIf="errorMessage()">{{ errorMessage() }}</p>
+  
+      <!-- Info Card overlapping the map -->
+      <div class="info-card">
+        <div class="info-card__item">
+          <span class="info-card__label">IP Address</span>
+          <span class="info-card__value">{{ ipData().ip }}</span>
+        </div>
+        <div class="info-card__divider"></div>
+        <div class="info-card__item">
+          <span class="info-card__label">Location</span>
+          <span class="info-card__value">{{ ipData().location }}</span>
+        </div>
+        <div class="info-card__divider"></div>
+        <div class="info-card__item">
+          <span class="info-card__label">Timezone</span>
+          <span class="info-card__value">{{ ipData().timezone }}</span>
+        </div>
+        <div class="info-card__divider"></div>
+        <div class="info-card__item">
+          <span class="info-card__label">ISP</span>
+          <span class="info-card__value">{{ ipData().isp }}</span>
+        </div>
+      </div>
+    </header>
+  
+    <!-- Map Placeholder -->
+    <main class="map-section">
+      <div id="map"></div>
+    </main>
+  
+  </div>
+  

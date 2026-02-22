@@ -1,0 +1,262 @@
+/* ── Design Tokens ─────────────────────────────────────────────────────────── */
+:host {
+    --color-hero-from: #2b4df0;
+    --color-hero-to: #4b6cf7;
+    --color-surface: #ffffff;
+    --color-text-primary: #1b2034;
+    --color-text-label: #969696;
+    --color-accent: #1a1a2e;
+    --color-border: #e5e5e5;
+    --radius-card: 16px;
+    --radius-input: 14px;
+    --shadow-card: 0 20px 60px rgba(0, 0, 0, 0.15);
+    --font-display: 'Rubik', sans-serif;
+  }
+  
+  /* ── Wrapper ───────────────────────────────────────────────────────────────── */
+  .tracker-wrapper {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    font-family: var(--font-display);
+  }
+  
+  /* ── Hero ──────────────────────────────────────────────────────────────────── */
+  .hero {
+    position: relative;
+    background: linear-gradient(135deg, var(--color-hero-from) 0%, var(--color-hero-to) 100%);
+    padding: 32px 24px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    z-index: 1;
+  }
+  
+  .hero__bg-pattern {
+    position: absolute;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' stroke='rgba(255,255,255,0.06)' stroke-width='1'%3E%3Crect x='10' y='10' width='40' height='40' rx='2'/%3E%3Cline x1='30' y1='0' x2='30' y2='10'/%3E%3Cline x1='30' y1='50' x2='30' y2='60'/%3E%3Cline x1='0' y1='30' x2='10' y2='30'/%3E%3Cline x1='50' y1='30' x2='60' y2='30'/%3E%3Ccircle cx='30' cy='30' r='4'/%3E%3C/g%3E%3C/svg%3E");
+    background-size: 60px 60px;
+    pointer-events: none;
+  }
+  
+  .hero__content {
+    position: relative;
+    width: 100%;
+    max-width: 560px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 24px;
+    padding-bottom: 120px;
+  }
+  
+  .hero__title {
+    color: #fff;
+    font-size: clamp(1.6rem, 4vw, 2rem);
+    font-weight: 500;
+    letter-spacing: -0.01em;
+    margin: 0;
+    text-align: center;
+  }
+  
+  /* ── Search Bar ────────────────────────────────────────────────────────────── */
+  .search-bar {
+    display: flex;
+    width: 100%;
+    border-radius: var(--radius-input);
+    overflow: hidden;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+  }
+  
+  .search-bar__input {
+    flex: 1;
+    padding: 18px 24px;
+    font-family: var(--font-display);
+    font-size: 1rem;
+    color: var(--color-text-primary);
+    border: none;
+    outline: none;
+    background: #fff;
+  }
+  
+  .search-bar__input::placeholder {
+    color: #aaa;
+  }
+  
+  .search-bar__btn {
+    width: 58px;
+    flex-shrink: 0;
+    background: var(--color-accent);
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s;
+  }
+  
+  .search-bar__btn:hover {
+    background: #2e2e4e;
+  }
+  
+  .search-bar__btn.loading {
+    cursor: not-allowed;
+  }
+  
+  .search-bar__arrow {
+    color: #fff;
+    font-size: 1.8rem;
+    line-height: 1;
+    margin-top: -2px;
+  }
+  
+  .search-bar__spinner {
+    width: 18px;
+    height: 18px;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-top-color: #fff;
+    border-radius: 50%;
+    animation: spin 0.7s linear infinite;
+  }
+  
+  @keyframes spin {
+    to { transform: rotate(360deg); }
+  }
+  
+  /* ── Info Card ─────────────────────────────────────────────────────────────── */
+  .info-card {
+    position: relative;
+    z-index: 10;
+    width: 100%;
+    max-width: 1100px;
+    margin: 0 auto;
+    transform: translateY(50%);
+    background: var(--color-surface);
+    border-radius: var(--radius-card);
+    box-shadow: var(--shadow-card);
+    display: flex;
+    flex-direction: row;
+    padding: 36px 40px;
+  }
+  
+  .info-card__item {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    padding: 0 20px;
+  }
+  
+  .info-card__item:first-child {
+    padding-left: 0;
+  }
+  
+  .info-card__item:last-child {
+    padding-right: 0;
+  }
+  
+  .info-card__divider {
+    width: 1px;
+    background: var(--color-border);
+    align-self: stretch;
+    flex-shrink: 0;
+  }
+  
+  .info-card__label {
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--color-text-label);
+  }
+  
+  .info-card__value {
+    font-size: 1.4rem;
+    font-weight: 500;
+    color: var(--color-text-primary);
+    line-height: 1.3;
+  }
+  
+  /* ── Map ───────────────────────────────────────────────────────────────────── */
+  .map-section {
+    flex: 1;
+    position: relative;
+    z-index: 0;
+  }
+  
+  #map {
+    width: 100%;
+    height: 100%;
+    min-height: 500px;
+  }
+  
+  .map-marker {
+    filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.3));
+    animation: bounce 1.5s ease-in-out infinite;
+  }
+  
+  @keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50%       { transform: translateY(-8px); }
+  }
+  
+  /* ── Responsive: Tablet / Mobile ───────────────────────────────────────────── */
+  @media (max-width: 768px) {
+    .hero {
+      padding: 24px 16px 0;
+    }
+  
+    .hero__content {
+      padding-bottom: 100px;
+    }
+  
+    .info-card {
+      flex-direction: column;
+      padding: 24px;
+      gap: 20px;
+      text-align: center;
+      transform: translateY(0);
+      margin: -40px 16px 0;
+      width: calc(100% - 32px);
+    }
+  
+    .info-card__item {
+      padding: 0;
+      gap: 6px;
+    }
+  
+    .info-card__divider {
+      width: 100%;
+      height: 1px;
+    }
+  
+    .info-card__value {
+      font-size: 1.2rem;
+    }
+  
+    .map-placeholder {
+      min-height: 420px;
+    }
+  
+    .map-placeholder__inner {
+      padding-top: 40px;
+    }
+  }
+  .hero__error {
+    color: #ffcccc;
+    font-size: 0.85rem;
+    margin: 0;
+  }
+  
+  @media (max-width: 480px) {
+    .hero__title {
+      font-size: 1.4rem;
+    }
+  
+    .search-bar__input {
+      padding: 16px 18px;
+      font-size: 0.9rem;
+    }
+  }
+  
